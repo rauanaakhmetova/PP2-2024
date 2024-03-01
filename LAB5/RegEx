@@ -1,0 +1,132 @@
+#1 Write a Python program that matches a string that has an 'a' followed by zero or more 'b''s.
+import re
+
+def match(string):
+    pattern = r'ab*'
+    if re.match(pattern, string):
+        return True
+    else:
+        return False
+
+strings = list(map(str, input().split()))
+for string in strings:
+    if match(string):
+        print(f"'{string}' match")
+    else:
+        print(f"'{string}' doesn't match")
+
+
+#2Write a Python program that matches a string that has an 'a' followed by two to three 'b'.
+import re
+def match(string):
+    pattern = r'abb' or r'abbb'
+    if re.match(pattern, string):
+        return True
+    else:
+        return False
+
+strings = list(map(str, input().split()))
+for string in strings:
+    if match(string):
+        print(f"'{string}' match")
+    else:
+        print(f"'{string}' doesn't match")
+
+
+#3Write a Python program to find sequences of lowercase letters joined with a underscore.
+import re
+
+def func(text):
+    pattern = r'\b[a-z]+_[a-z]+\b' 
+    sequences = re.findall(pattern, text)
+    return sequences
+
+text = str(input())
+result = func(text)
+print(result)
+
+
+#4Write a Python program to find the sequences of one upper case letter followed by lower case letters.
+import re
+
+def func(text):
+    pattern = r'\b[A-Z]+[a-z]+\b' 
+    sequences = re.findall(pattern, text)
+    return sequences
+
+text = str(input())
+result = func(text)
+print(result)
+
+#5*Write a Python program that matches a string that has an 'a' followed by anything, ending in 'b'.
+
+import re
+
+def match(text):
+    pattern = r'a.*b$'
+    if re.match(pattern, string):
+        return True
+    else:
+        return False
+
+strings = list(map(str, input().split()))
+for string in strings:
+    if match(string):
+        print(f"'{string}' match")
+    else:
+        print(f"'{string}' doesn't match")
+
+#6Write a Python program to replace all occurrences of space, comma, or dot with a colon.
+
+import re
+
+def func(text):
+    pattern = r'[ ,.]'
+    replace = re.sub(pattern, ':', text)
+    return replace
+        
+string = str(input())
+result = func(string)
+print(result)
+
+#7Write a python program to convert snake case string to camel case string.
+import re
+def snake(string):
+    camel = re.sub(r'_([a-z])', lambda x: x.group(1).upper(), string)
+    return camel
+string = str(input())
+result = snake(string)
+print(result)
+
+
+#8Write a Python program to split a string at uppercase letters.
+
+import re
+def uppercase(string):
+    res = re.findall('[A-Z][^A-Z]*', string)
+    return res
+string = str(input())
+result = uppercase(string)
+print(result)
+
+#9Write a Python program to insert spaces between words starting with capital letters.
+
+import re
+def spaces(string):
+    res = re.sub(r'([A-Z][a-z]*)', r' \1', string)
+    return res
+string = str(input())
+result = spaces(string)
+print(result)
+
+
+#10Write a Python program to convert a given camel case string to snake case.
+import re
+
+def camel(string):
+    snake = re.sub(r'(?<!^)(?=[A-Z])', '_', string).lower()
+    return snake
+
+string = str(input())
+result = camel(string)
+print(result)
