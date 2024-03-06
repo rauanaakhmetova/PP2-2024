@@ -1,0 +1,66 @@
+#1Write a Python program with builtin function to multiply all the numbers in a list
+from functools import reduce
+import operator
+
+def func(numbers):
+    list = reduce(operator.mul, numbers, 1)
+    return list
+
+input_list = input().split()
+list = [int(num) for num in input_list]
+result = func(list)
+print(result)
+
+#2Write a Python program with builtin function that accepts a string and calculate the number of upper case letters and lower case letters
+def counter(string):
+    uppercase = 0
+    lowercase = 0
+    for char in string:
+        if char.isupper():
+            uppercase += 1
+        elif char.islower():
+            lowercase += 1
+    return uppercase, lowercase
+
+input_string = input()
+upper_count, lower_count = counter(input_string)
+print("Uppercase letters=", upper_count)
+print("Lowercase letters=", lower_count)
+
+
+#3Write a Python program with builtin function that checks whether a passed string is palindrome or not.
+
+def check(string):
+    string = string.lower()
+    string = ''.join(char for char in string if char.isalnum())
+    return string == string[::-1]
+
+input_string = input()
+if check(input_string):
+    print("palindrome.")
+else:
+    print("Not a palindrome.")
+
+#4Write a Python program that invoke square root function after specific milliseconds
+import time
+import math
+
+def square_root(number, milliseconds):
+    seconds = milliseconds / 1000
+    time.sleep(seconds)
+    result = math.sqrt(number)
+    return result
+number = int(input())
+milliseconds = int(input())
+result = square_root(number, milliseconds)
+print(f"Square root of {number} after {milliseconds} milliseconds is", result)
+
+#5Write a Python program with builtin function that returns True if all elements of the tuple are true.
+def all_true(elements):
+    return all(elements)
+
+elements = input().split()
+tuple = [bool(element) for element in elements]
+if tuple:
+    result = all_true(tuple)
+    print( result)
