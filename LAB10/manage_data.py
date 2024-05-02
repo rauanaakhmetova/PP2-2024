@@ -1,17 +1,13 @@
-import csv
 import psycopg2
-from db import insert_data, query_data, delete_data, update_data, enter_data, upload_csv
 
-conn = psycopg2.connect("postgres://pp2_db_test_user:lfFfLH7HjK2ivnEzcN1ZokpgdhFi3WEZ@dpg-cohofjtjm4es739ccgn0-a.oregon-postgres.render.com/pp2_db_test", sslmode='require')
+conn = psycopg2.connect("postgres://snake_pp2_stats_user:TvG6D7Dw4osz3HV4AMAI8IBva5mCb98N@dpg-cohp3fn79t8c7385l7j0-a.oregon-postgres.render.com/snake_pp2_stats", sslmode='require')
 cur = conn.cursor()
 
 
+def get_all_data():
+    cur.execute("SELECT * FROM snakegame ORDER BY user_score DESC")
+    rows = cur.fetchall()
+    for row in rows:
+        print(f"Username = {row[0]} Score = {row[1]} Level = {row[2]}")
 
-
-# enter_data()
-# upload_csv('numbers.csv')
-# enter_data()
-
-delete_data(name='PP2')
-
-query_data()
+get_all_data()
